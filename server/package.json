@@ -1,0 +1,20 @@
+{
+  "name": "mern-survey",
+  "version": "0.1.1",
+  "description": "This repository contains source code written during Stephen Grider's Udemy course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node JS",
+    "Express",
+    "API",
+    "MongoDB"
+  ],
+  "author": "Alessandro Pecorilla",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
