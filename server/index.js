@@ -10,8 +10,8 @@ const keys = require('./config/keys')
 require('./services/passport')
 require('./models/User')
 
-/* ==== SERVER SETUP ==== */
 
+/* ==== SERVER SETUP ==== */
 // Define MongoDB connection string for server to use (see config/keys.js)
 const mongoUri = `mongodb+srv://${keys.mongoUsername}:${keys.mongoPassword}@${keys.mongoHost}/${keys.mongoDbName}?retryWrites=true&w=majority`
 
@@ -26,7 +26,7 @@ try {
         console.log(`MongoDB database's (${keys.mongoDbName}) is successfully connected`);
     })
 } catch (error) {
-    console.log(`Unable to connect to ${keys.mongoDbName} database : ${error.message}`);
+    console.log(`Unable to connect to ${keys.serverPort} database : ${error.message}`);
 }
 
 /* ==== EXPRESS SETUP ==== */
@@ -49,7 +49,7 @@ app.use(passport.session()) // Serialize and Deserialize passport
 require('./routes/authRoutes')(app)
 
 // Define port for server to listen to 
-const PORT = keys.serverPort || 6575
+const PORT = keys.serverPort
 
 app.listen(PORT, () => {
     console.log(`Server is currently listening on port: ${PORT}`)

@@ -2,8 +2,8 @@
 const passport = require('passport'); // PASSPORT
 const GoogleStrategy = require('passport-google-oauth20').Strategy // GOOGLE STRATEGY
 /* ==== FILES IMPORTS ==== */
-const keys = require('../config/keys');
 const User = require('../models/User');
+const keys = require('../config/keys');
 
 /* ==== PASSPORT SETUP ==== */
 
