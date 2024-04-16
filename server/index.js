@@ -2,6 +2,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan');
+const cookieSession = require('cookie-session')
+const passport = require('passport')
+/* ==== FILES IMPORTS ==== */
 const keys = require('./config/keys')
 /* ==== SERVICES IMPORTS ==== */
 require('./services/passport')
@@ -26,10 +29,21 @@ try {
     console.log(`Unable to connect to ${keys.mongoDbName} database : ${error.message}`);
 }
 
-
 /* ==== EXPRESS SETUP ==== */
 const app = express()
 app.use(morgan('dev'))
+
+/* ==== MIDDLEWARE SETUP ==== */
+app.use(
+    cookieSession({
+        maxAge: 20 * 24 * 60 * 60 * 1000, // How long the cookie can last (20 days)
+        keys: [keys.cookieKey] // Cookie encryption key
+    })
+)
+
+/* ==== PASSPORT SETUP ==== */
+app.use(passport.initialize()) // Initialize passport
+app.use(passport.session()) // Serialize and Deserialize passport
 
 /* ==== ROUTES SETUP ==== */
 require('./routes/authRoutes')(app)

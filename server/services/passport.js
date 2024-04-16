@@ -3,10 +3,32 @@ const passport = require('passport'); // PASSPORT
 const GoogleStrategy = require('passport-google-oauth20').Strategy // GOOGLE STRATEGY
 /* ==== FILES IMPORTS ==== */
 const keys = require('../config/keys');
-const User = require('../models/User')
+const User = require('../models/User');
+
+/* ==== PASSPORT SETUP ==== */
+
+/** Middleware to Serialize user by id
+ * @param {Object} user - User model
+ * @param {Function} done - Callback function to call when strategy is done
+ */
+passport.serializeUser((user, done) => {
+    // Serialize user by id for session
+    done(null, user.id)
+})
 
 
-/* ==== OAUTH SETUP ==== */
+/** Middleware to Deserialize user by id
+ * @param {String} id - User id
+ * @param {Function} done - Callback function to call when strategy is done
+ * @param {Object} user - User model
+ */
+passport.deserializeUser((id, done) => {
+    // Deserialize user by id for session
+    User.findById(id).then((user) => {
+        done(null, user)
+    })
+})
+
 
 /** Middleware for Google Strategy
  * @param {String} accessToken - Google OAuth2 access token
