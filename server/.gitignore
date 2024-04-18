@@ -162,3 +162,6 @@ dist
 # DEVELOPMENT KEYS
 dev.js
 config.env
+
+# YARN LOCK
+yarn.lock

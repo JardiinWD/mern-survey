@@ -1,5 +1,5 @@
 {
-  "name": "mern-survey",
+  "name": "mern-survey-server",
   "version": "0.1.0",
   "description": "This repository contains source code written during Stephen Grider's Udemy course",
   "main": "index.js",
@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node index.js",
     "watch:dev": "cross-env NODE_ENV=development nodemon index.js",
-    "watch:prod": "cross-env  NODE_ENV=production nodemon index.js"
+    "watch:prod": "cross-env NODE_ENV=production nodemon index.js",
+    "watch:both": "concurrently \"yarn watch:dev\" \"yarn dev --prefix client\""
   },
   "keywords": [
     "Node JS",
@@ -24,6 +25,7 @@
   "author": "Alessandro Pecorilla",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.2.2",
     "cookie-session": "^2.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.19.2",

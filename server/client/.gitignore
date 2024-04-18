@@ -159,6 +159,9 @@ dist
 # and uncomment the following lines
 # .pnp.*
 
+# YARN LOCK
+yarn.lock
+
 # DEVELOPMENT KEYS
 dev.js
 config.env
